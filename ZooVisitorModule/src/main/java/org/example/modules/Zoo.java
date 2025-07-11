@@ -1,6 +1,10 @@
 package org.example.modules;
 
 import org.example.models.animals.*;
+import org.example.models.buildings.Drinks;
+import org.example.models.buildings.Foods;
+import org.example.models.buildings.Gifts;
+import org.example.models.buildings.Shops;
 
 import java.util.*;
 
@@ -111,63 +115,78 @@ public class Zoo {
 
 
     public void visitShops() {
-        Map<Integer, String> items = new LinkedHashMap<>();
-        items.put(1, "Soft Drink - 30 PHP");
-        items.put(2, "Popcorn - 50 PHP");
-        items.put(3, "Plush Toy - 120 PHP");
-        items.put(4, "Keychain - 45 PHP");
-
-        Map<String, Integer> itemPrices = Map.of(
-                "Soft Drink", 30,
-                "Popcorn", 50,
-                "Plush Toy", 120,
-                "Keychain", 45
+        List<Shops> shopTypes = List.of(
+                new Foods(),
+                new Drinks(),
+                new Gifts()
         );
 
-        List<String> cart = new ArrayList<>();
+        System.out.println("\n=== Zoo Shops ===");
+        for (int i = 0; i < shopTypes.size(); i++) {
+            System.out.println((i + 1) + ". " + shopTypes.get(i).getName());
+        }
+
+        System.out.print("Choose a shop to visit: ");
+        int choice = scanner.nextInt();
+        scanner.nextLine();
+
+        if (choice < 1 || choice > shopTypes.size()) {
+            System.out.println("Invalid shop choice.");
+            return;
+        }
+
+        Shops selectedShop = shopTypes.get(choice - 1);
+        selectedShop.enter();
+        List<ShopItem> items = selectedShop.getItems();
+        List<ShopItem> cart = new ArrayList<>();
+
         boolean shopping = true;
-
         while (shopping) {
-            System.out.println("\n=== Zoo Shop ===");
-                    items.forEach((key, value) -> System.out.println(key + ". " + value));
+            System.out.println("\n=== " + selectedShop.getName() + " ===");
+            for (int i = 0; i < items.size(); i++) {
+                System.out.println((i + 1) + ". " + items.get(i));
+            }
 
-            System.out.print("Enter the number of the item you want to buy: ");
-            int choice = scanner.nextInt();
+            System.out.print("\nEnter the number of the item you want to buy: ");
+            int itemChoice = scanner.nextInt();
             scanner.nextLine();
 
-            String selectedItem = null;
-            if (items.containsKey(choice)) {
-                selectedItem = items.get(choice).split(" - ")[0];
+            if (itemChoice >= 1 && itemChoice <= items.size()) {
+                ShopItem selectedItem = items.get(itemChoice - 1);
                 cart.add(selectedItem);
             } else {
-                System.out.println("Invalid choice.");
+                System.out.println("Invalid item.");
                 continue;
             }
 
-            System.out.println("Selected:");
-            for (String item : cart) {
-                System.out.println(item + " (" + itemPrices.get(item) + " PHP)");
+            System.out.println("\nSelected:");
+            for (ShopItem item : cart) {
+                System.out.println(item.getName() + " (" + item.getPrice() + " PHP)");
             }
 
-            System.out.print("Proceed to checkout? (yes/no): ");
-                    String proceed = scanner.nextLine();
+            String confirm;
 
-            if (proceed.equalsIgnoreCase("yes")) {
-                int total = 0;
-                System.out.println("Payment successful!");
-                System.out.println("Receipt:");
-                for (String item : cart) {
-                    int price = itemPrices.get(item);
-                    System.out.println(" - " + item + ": " + price + " PHP");
-                    total += price;
+            do {
+                System.out.print("\nProceed to checkout? (yes/no): ");
+                confirm = scanner.nextLine();
+
+                if (confirm.equalsIgnoreCase("yes")) {
+                    int total = 0;
+                    System.out.println("\nPayment successful!");
+                    System.out.println("Receipt:");
+                    for (ShopItem item : cart) {
+                        System.out.println(" - " + item.getName() + ": " + item.getPrice() + " PHP");
+                        total += item.getPrice();
+                    }
+                    System.out.println("Total Paid: " + total + " PHP");
+                    shopping = false;
+                    break;
+                } else if (confirm.equalsIgnoreCase("no")) {
+                    break;
+                } else {
+                    System.out.println("Invalid option. Try again.");
                 }
-                System.out.println("Total Paid: " + total + " PHP");
-                shopping = false;
-            } else if(proceed.equalsIgnoreCase("no")) {
-                continue;
-            } else {
-                System.out.println("Invalid option. Try again.");
-            }
+            } while(confirm != "yes");
         }
     }
 

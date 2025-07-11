@@ -9,7 +9,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        // Create test animals
+        // Temporary
         List<Animal> animals = new ArrayList<>();
         Animal elephant = new Elephant("Pachyderm Enclosure");
         Animal lion = new Lion("Feline Enclosure");
@@ -27,6 +27,7 @@ public class Main {
         animals.add(parrot);
 
         Zoo zooVisitor = new Zoo(animals);
+        //
 
         int option;
         do {
