@@ -30,12 +30,12 @@ public class Handler extends Person {
     }
 
     public void feed(Animal animal){
-        System.out.print(getName() + " is feeding " + animal.getName());
+        System.out.println(getName() + " is feeding " + animal.getName());
         animal.eat();
     }
 
     public void exercise(Animal animal){
-        System.out.print(getName() + " is exercising " + animal.getName());
+        System.out.println(getName() + " is exercising " + animal.getName());
         animal.roam();
     }
 
@@ -75,7 +75,7 @@ public class Handler extends Person {
                 System.out.println((i + 1) + ". " + assignedAnimals.get(i).getName());
             }
 
-            System.out.println("Choose animal number to interact with (0 to exit): ");
+            System.out.print("Choose animal number to interact with (0 to exit): ");
 
             try{
                 animalChoice = scan.nextInt();
@@ -84,10 +84,10 @@ public class Handler extends Person {
                 if(animalChoice > 0 && animalChoice <= assignedAnimals.size()){
                     Animal selectedAnimal = assignedAnimals.get(animalChoice - 1);
                     System.out.println("----- Interacting with " + selectedAnimal.getName() + "-----");
-                    System.out.print("1. Feed");
-                    System.out.print("2. Exercise");
-                    System.out.print("3. Examine");
-                    System.out.print("Choose Action: ");
+                    System.out.println("1. Feed");
+                    System.out.println("2. Exercise");
+                    System.out.println("3. Examine");
+                    System.out.println("Choose Action: ");
 
                     int choice = scan.nextInt();
                     scan.nextLine();

@@ -28,7 +28,7 @@ public class AdminMenu {
     }
 
     private boolean authenticate(){
-        System.out.print("Please login.");
+        System.out.println("Please login.");
         System.out.print("Enter Username: ");
         String username = scan.nextLine();
         System.out.print("Enter Password: ");
@@ -51,7 +51,7 @@ public class AdminMenu {
 
             try {
                 choice = scan.nextInt();
-                scan.next();
+                scan.nextLine();
                 switch (choice) {
                     case 1:
                         setupZooStaff();
@@ -88,29 +88,29 @@ public class AdminMenu {
         }
     private void setupZooStaff(){
         System.out.println("----- Setup Zoo Staff -----");
-        System.out.println("Enter your name, manager: ");
+        System.out.print("Enter your name, manager: ");
         zoo.setManager(scan.nextLine());
 
-        System.out.println("Enter Veterinarian's name: ");
+        System.out.print("Enter Veterinarian's name: ");
         zoo.setVeterinarian(scan.nextLine());
 
-        System.out.println("Enter Handler for Pachyderm Enclosure: ");
+        System.out.print("Enter Handler for Pachyderm Enclosure: ");
         zoo.setPachydermHandler(scan.nextLine());
 
-        System.out.println("Enter Handler for Feline Enclosure: ");
+        System.out.print("Enter Handler for Feline Enclosure: ");
         zoo.setFelineHandler(scan.nextLine());
 
-        System.out.println("Enter Handler for Bird Enclosure: ");
+        System.out.print("Enter Handler for Bird Enclosure: ");
         zoo.setBirdHandler(scan.nextLine());
 
-        System.out.println("Enter Vendor for Ticket shop: ");
+        System.out.print("Enter Vendor for Ticket shop: ");
         zoo.setTicketVendor(scan.nextLine());
 
-        System.out.println("Enter Vendor for Shop: ");
-        zoo.setTicketVendor(scan.nextLine());
+        System.out.print("Enter Vendor for Shop: ");
+        zoo.setShopVendor(scan.nextLine());
 
         System.out.println("Zoo staff setup complete");
-        zoo.setShopVendor(scan.nextLine());
+
 
 
     }
@@ -133,7 +133,7 @@ public class AdminMenu {
         if (currentHandler != null){
             currentHandler.performDuties();
         }else{
-            System.out.println("Handler with name: " + handlerName + "not found or not assigned to an enclosure");
+            System.out.println("Handler with name: " + handlerName + " not found or not assigned to an enclosure");
             System.out.println("Please setup first via 'Setup Zoo Staff' option.");
             }
     }
