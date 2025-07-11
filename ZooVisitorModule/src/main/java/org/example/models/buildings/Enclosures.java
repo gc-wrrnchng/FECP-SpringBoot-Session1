@@ -3,16 +3,20 @@ package org.example.models.buildings;
 import org.example.models.animals.Animal;
 import java.util.*;
 
-public abstract class Enclosures extends Buildings {
-    protected List<Animal> animals;
+public abstract class Enclosures<T extends Animal> extends Buildings {
+    protected List<T> animals = new ArrayList<>();
 
-    public Enclosures(String name, List<Animal> animals) {
+    public Enclosures(String name, List<T> animals) {
         super(name);
         this.animals = animals;
     }
 
-    public List<Animal> getAnimals() {
+    public List<T> getAnimals() {
         return animals;
+    }
+
+    public void addAnimal(T animal) {
+        animals.add(animal);
     }
 
     @Override

@@ -1,8 +1,8 @@
 package org.example.models.animals;
 
 public abstract class Animal {
-    public boolean healthy;
-    public String name;
+    protected boolean healthy;
+    protected String name;
 
     public Animal(String name) {
         this.name = name;
@@ -23,6 +23,10 @@ public abstract class Animal {
 
     public String getName() {
         return name;
+    }
+
+    public void setHealthy(boolean healthy) {
+        this.healthy = healthy;
     }
 
     public abstract void makeSound();

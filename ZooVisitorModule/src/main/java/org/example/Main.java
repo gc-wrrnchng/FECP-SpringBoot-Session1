@@ -17,6 +17,9 @@ public class Main {
         Animal tiger = new Tiger("Feline Enclosure");
         Animal parrot = new Parrot("Bird Enclosure");
 
+        tiger.setHealthy(false);
+        parrot.setHealthy(false);
+
         animals.add(elephant);
         animals.add(lion);
         animals.add(owl);

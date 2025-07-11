@@ -176,7 +176,7 @@ public class Zoo {
         int option;
 
         do {
-            System.out.println("=== Zoo Hospital Monitor ===");
+            System.out.println("\n=== Zoo Hospital Monitor ===");
             System.out.println("1. View Sick Animals");
             System.out.println("2. View Healed Animals");
             System.out.println("3. Attend Science Lecture");
@@ -221,7 +221,7 @@ public class Zoo {
                     System.out.println("Dr. Ellie begins healing sick animals...");
                     List<Animal> healedNow = new ArrayList<>();
                     for (Animal animal : sickAnimals) {
-                        animal.healthy = true;
+                        animal.setHealthy(true);
                         healedNow.add(animal);
                         String timestamp = java.time.LocalDateTime.now()
                                 .format(java.time.format.DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
