@@ -1,4 +1,4 @@
-package org.example;
+package org.example.modules;
 
 import org.example.models.*;
 
@@ -108,7 +108,7 @@ public class Zoo {
             System.out.println("Invalid option.");
         }
     }
-    
+
     public void startExperience() {
         int option;
         do {
