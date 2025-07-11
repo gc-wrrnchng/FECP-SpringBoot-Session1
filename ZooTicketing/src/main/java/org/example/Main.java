@@ -68,8 +68,14 @@ public class Main {
             System.out.println("[Ticket added to system]");
         } else {
             System.out.println("\nYour purchase has been cancelled.");
+            scanner.close();
+            return;
         }
-        
+
+        System.out.println("=== 🎟️ VISITOR ENTRY ===");
+        System.out.print("Enter your ticket code: ");
+        System.out.println(ticket.getCode());
+        // TODO: Implement ticket validation
         scanner.close();
     }
 }
