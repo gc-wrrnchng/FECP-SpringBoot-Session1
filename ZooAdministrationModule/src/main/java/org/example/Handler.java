@@ -10,4 +10,20 @@ public class Handler extends Person {
         System.out.println(getName() + " is feeding " + animalName);
     }
 
+    public void Exercise(String animalName){
+        System.out.println(getName() + " is exercising " + animalName);
+    }
+
+    public void Examine(String animalName){
+
+        System.out.println(getName() + " is examining " + animalName);
+    }
+
+    @Override
+    public String toString(){
+
+        return "Handler - " + super.toString();
+
+    }
+
 }
