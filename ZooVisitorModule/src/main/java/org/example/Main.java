@@ -1,6 +1,6 @@
 package org.example;
 
-import org.example.models.*;
+import org.example.models.animals.*;
 import org.example.modules.*;
 
 import java.util.*;

@@ -1,4 +1,4 @@
-package org.example.models;
+package org.example.models.animals;
 
 public abstract class Bird extends Animal {
     protected String location;

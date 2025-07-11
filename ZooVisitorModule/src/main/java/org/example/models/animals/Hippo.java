@@ -1,4 +1,4 @@
-package org.example.models;
+package org.example.models.animals;
 
 public class Hippo extends Pachyderm {
     public Hippo(String location) {

@@ -1,4 +1,4 @@
-package org.example.models;
+package org.example.models.animals;
 
 public abstract class Animal {
     protected boolean healthy;
