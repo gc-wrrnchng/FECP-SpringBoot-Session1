@@ -2,7 +2,7 @@ package org.example;
 
 public class Vendor extends Person{
 
-    public Vendor (){
+    public Vendor (String name){
         super("Unnamed vendor", "Shop");
     }
     public Vendor(String name, String location) {

@@ -2,7 +2,7 @@ package org.example;
 
 public class Manager extends Person {
 
-    public Manager() {
+    public Manager(String name) {
         super("Unnamed Manager", "Main Office");
     }
     public Manager(String name, String location) {
