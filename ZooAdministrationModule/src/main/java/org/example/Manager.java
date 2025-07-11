@@ -6,4 +6,16 @@ public class Manager extends Person {
         super(name, location);
     }
 
+    public void CloseZoo(){
+        System.out.println(getName() + " is closing the zoo.");
+    }
+
+    public void OpenZoo(){
+        System.out.println(getName() + " is opening the zoo.");
+    }
+
+    public String toString(){
+        return "Manager - " + super.toString();
+    }
+
 }
