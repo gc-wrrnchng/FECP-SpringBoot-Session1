@@ -109,6 +109,10 @@ public class Zoo {
         }
     }
 
+    private void visitShops() {
+
+    }
+
     public void startExperience() {
         int option;
         do {
@@ -127,7 +131,7 @@ public class Zoo {
                     break;
                 }
                 case 2: {
-
+                    visitShops();
                 }
                 case 3: {
 
