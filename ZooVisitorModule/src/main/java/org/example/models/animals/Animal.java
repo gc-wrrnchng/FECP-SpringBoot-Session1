@@ -1,8 +1,8 @@
 package org.example.models.animals;
 
 public abstract class Animal {
-    protected boolean healthy;
-    protected String name;
+    public boolean healthy;
+    public String name;
 
     public Animal(String name) {
         this.name = name;
