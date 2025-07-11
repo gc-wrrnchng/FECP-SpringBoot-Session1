@@ -2,8 +2,11 @@ package org.example;
 
 public class Manager extends Person {
 
+    public Manager() {
+        super("Unnamed Manager", "Main Office");
+    }
     public Manager(String name, String location) {
-        super(name, location);
+        super(name, "Main Office");
     }
 
     public void CloseZoo(){
