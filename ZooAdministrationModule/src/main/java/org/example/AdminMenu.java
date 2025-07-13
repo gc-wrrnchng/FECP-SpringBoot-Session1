@@ -18,7 +18,7 @@ public class AdminMenu {
     }
 
     public void start(){
-        System.out.println("----- Zoo Administrator Login -----");
+        System.out.println("\n----- Zoo Administrator Login -----");
         if(authenticate()){
             System.out.println("Login Successfully");
             zooAdminMainMenu();
@@ -41,7 +41,7 @@ public class AdminMenu {
         int choice = 0;
 
         while(true){
-            System.out.println("----- Zoo Administrator Login -----");
+            System.out.println("\n----- Zoo Administrator Login -----");
             System.out.println("1. Setup Zoo Staff");
             System.out.println("2. Access Handler Module");
             System.out.println("3. Open Zoo to Visitors");
@@ -87,7 +87,7 @@ public class AdminMenu {
 
         }
     private void setupZooStaff(){
-        System.out.println("----- Setup Zoo Staff -----");
+        System.out.println("\n----- Setup Zoo Staff -----");
         System.out.print("Enter your name, manager: ");
         zoo.setManager(scan.nextLine());
 

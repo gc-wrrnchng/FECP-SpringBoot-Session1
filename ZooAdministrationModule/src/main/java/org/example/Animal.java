@@ -2,7 +2,7 @@ package org.example;
 
 public abstract class Animal {
     private String name;
-    private String enclosure;
+    private Enclosure enclosure;
     private boolean healthy;
 
 
@@ -11,7 +11,7 @@ public abstract class Animal {
     public abstract void sleep();
     public abstract void roam();
 
-    public Animal(String name, String enclosure){
+    public Animal(String name, Enclosure enclosure){
         this.name = name;
         this.enclosure = enclosure;
         this.healthy = true;
@@ -21,7 +21,7 @@ public abstract class Animal {
         return name;
     }
 
-    public String getEnclosure(){
+    public Enclosure getEnclosure(){
         return enclosure;
 
     }

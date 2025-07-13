@@ -15,16 +15,48 @@ public class Zoo {
     private Vendor shopVendor;
 
     private List<Animal> animals;
+    private List<Enclosure> enclosures;
+    private PachydermEnclosure pachydermEnclosure;
+    private FelineEnclosure felineEnclosure;
+    private BirdEnclosure birdEnclosure;
+
     private Hospital hospital;
 
     public Zoo(){
         this.isOpen = false;
         this.hospital = new Hospital();
+        this.enclosures = new ArrayList<>();
 
         this.animals = new ArrayList<>();
-        animals.add(new Pachyderm("Dumbo", "Pachyderm Enclosure"));
-        animals.add(new Feline("Mufasa", "Feline Enclosure"));
-        animals.add(new Bird("Tweetie Bird", "Bird Enclosure"));
+
+        this.felineEnclosure = new FelineEnclosure("Feline's Den");
+        this.pachydermEnclosure = new PachydermEnclosure("Pachyderm's Habitat");
+        this.birdEnclosure = new BirdEnclosure("Bird's Habitat");
+
+        enclosures.add(felineEnclosure);
+        enclosures.add(pachydermEnclosure);
+        enclosures.add(birdEnclosure);
+
+
+        Feline mufasa = new Feline("Mufasa", felineEnclosure);
+        Feline meow = new Feline("Meow", felineEnclosure);
+        Pachyderm dumbo = new Pachyderm("Dumbo", pachydermEnclosure);
+        Pachyderm dumby = new Pachyderm("Dumby", pachydermEnclosure);
+        Bird tweetie = new Bird("tweetie", birdEnclosure);
+
+        animals.add(mufasa);
+        animals.add(meow);
+        animals.add(dumbo);
+        animals.add(dumby);
+        animals.add(tweetie);
+
+
+        felineEnclosure.getAnimals().add(mufasa);
+        felineEnclosure.getAnimals().add(meow);
+        pachydermEnclosure.getAnimals().add(dumbo);
+        pachydermEnclosure.getAnimals().add(dumby);
+        birdEnclosure.getAnimals().add(tweetie);
+
     }
 
     public boolean isOpen(){
@@ -97,5 +129,21 @@ public class Zoo {
 
     public Handler getBirdHandler() {
         return birdHandler;
+    }
+
+    public PachydermEnclosure getPachydermEnclosure() {
+        return pachydermEnclosure;
+    }
+
+    public FelineEnclosure getFelineEnclosure() {
+        return felineEnclosure;
+    }
+
+    public BirdEnclosure getBirdEnclosure() {
+        return birdEnclosure;
+    }
+
+    public List<Enclosure> getEnclosures(){
+        return enclosures;
     }
 }
