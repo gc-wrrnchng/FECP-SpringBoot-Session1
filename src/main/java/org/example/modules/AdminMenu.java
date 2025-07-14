@@ -65,7 +65,7 @@ public class AdminMenu {
 
                     case 3:
                         zoo.openZoo();
-                        break;
+                        return false;
 
                     case 4:
                         zoo.closeZoo();
