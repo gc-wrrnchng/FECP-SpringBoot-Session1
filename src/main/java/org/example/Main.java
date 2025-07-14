@@ -48,6 +48,7 @@ public class Main {
 
         } while (option != 4);
     }
+}
 
     private static Zoo getZoo() {
         List<Animal> animals = new ArrayList<>();
