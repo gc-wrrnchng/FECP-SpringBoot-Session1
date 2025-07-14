@@ -6,6 +6,7 @@ import org.example.models.buildings.Drinks;
 import org.example.models.buildings.Foods;
 import org.example.models.buildings.Gifts;
 import org.example.models.buildings.Shops;
+import org.example.models.people.Veterinarian;
 
 import java.util.*;
 
@@ -13,11 +14,13 @@ public class Zoo {
     private List<Animal> healthyAnimals;
     private List<Animal> sickAnimals;
     private Scanner scanner;
+    private Veterinarian veterinarian;
 
-    public Zoo(List<Animal> animals) {
+    public Zoo(List<Animal> animals, Veterinarian veterinarian) {
         this.healthyAnimals = new ArrayList<>();
         this.sickAnimals = new ArrayList<>();
         this.scanner = new Scanner(System.in);
+        this.veterinarian = veterinarian;
 
         for (Animal animal : animals) {
             if (animal.isHealthy()) {
@@ -192,7 +195,6 @@ public class Zoo {
     public void visitHospital() {
         Map<String, String> healedTimestamps = new LinkedHashMap<>();
         int option;
-
         do {
             System.out.println("\n=== Zoo Hospital Monitor ===");
             System.out.println("1. View Sick Animals");
@@ -203,7 +205,6 @@ public class Zoo {
             System.out.print("Choose an option: ");
             option = scanner.nextInt();
             scanner.nextLine();
-
             switch (option) {
                 case 1 -> {
                     System.out.println("Sick Animals currently in Hospital:");
@@ -228,7 +229,7 @@ public class Zoo {
                     break;
                 }
                 case 3 -> {
-                    System.out.println("Dr. Ellie is giving a lecture on animal health and conservation.");
+                    System.out.println(veterinarian.getName() + " is giving a lecture on animal health and conservation.");
                     break;
                 }
                 case 4 -> {
@@ -236,9 +237,10 @@ public class Zoo {
                         System.out.println("No animals to heal.");
                         break;
                     }
-                    System.out.println("Dr. Ellie begins healing sick animals...");
+                    System.out.println(veterinarian.getName() + " begins healing sick animals...");
                     List<Animal> healedNow = new ArrayList<>();
                     for (Animal animal : sickAnimals) {
+                        veterinarian.heal(animal.getName());
                         animal.setHealthy(true);
                         healedNow.add(animal);
                         String timestamp = java.time.LocalDateTime.now()
