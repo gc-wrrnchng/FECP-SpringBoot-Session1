@@ -1,7 +1,5 @@
 package org.example;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,19 +7,20 @@ public class Hospital {
 
     private List<Animal> admittedAnimals;
 
-    public Hospital(){
+    public Hospital() {
         this.admittedAnimals = new ArrayList<>();
     }
 
-    public void admitAnimal(Animal animal){
-        if(!admittedAnimals.contains(animal)){
-            animal.setHealthy(false);
+    public void admitAnimal(Animal animal) {
+        if (animal != null && !admittedAnimals.contains(animal)) {
             admittedAnimals.add(animal);
-            String admissionTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("MMM dd, yyyy HH:mm:ss"));
-            System.out.println("Sending to hospital...");
-            System.out.println(animal.getName() + " is admitted at " + admissionTime);
-        } else{
-            System.out.println(animal.getName() + " is already admitted to the Hospital");
+            System.out.println(animal.getName() + " has been admitted to the hospital.");
+        } else {
+            System.out.println(animal.getName() + " is already in the hospital.");
         }
+    }
+
+    public List<Animal> getAdmittedAnimals() {
+        return admittedAnimals;
     }
 }
