@@ -1,4 +1,6 @@
-package org.example;
+package org.example.models.modules;
+
+import org.example.models.people.Handler;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;

@@ -1,20 +1,21 @@
-package org.example;
+package org.example.models.animals;
 
-public class Pachyderm extends Animal {
+import org.example.models.buildings.Enclosure;
 
-    public Pachyderm(String name, Enclosure enclosure){
+public class Feline extends Animal {
+    public  Feline(String name, Enclosure enclosure){
         super(name, enclosure);
-
     }
+
     @Override
     public void makeSound() {
-        System.out.println(getName() + "Trumpets");
+        System.out.println(getName() + "ROAR!");
         System.out.println();
     }
 
     @Override
     public void eat() {
-        System.out.println(getName() + " is eating plants.");
+        System.out.println(getName() + " is eating meat.");
         System.out.println();
     }
 

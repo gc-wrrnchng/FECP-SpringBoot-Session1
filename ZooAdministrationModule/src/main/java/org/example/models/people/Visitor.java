@@ -1,6 +1,6 @@
-package org.example;
+package org.example.models.people;
 
-public class Visitor extends Person{
+public class Visitor extends Person {
 
     public Visitor(String name, String location){
         super(name, location);

@@ -1,4 +1,14 @@
-package org.example;
+package org.example.models.modules;
+
+import org.example.models.animals.Animal;
+import org.example.models.animals.Bird;
+import org.example.models.animals.Feline;
+import org.example.models.animals.Pachyderm;
+import org.example.models.buildings.*;
+import org.example.models.people.Handler;
+import org.example.models.people.Manager;
+import org.example.models.people.Vendor;
+import org.example.models.people.Veterinarian;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -5,3 +5,5 @@ package org.example;
 
     }
 }
+
+models animals buildings

@@ -1,4 +1,6 @@
-package org.example;
+package org.example.models.animals;
+
+import org.example.models.buildings.Enclosure;
 
 public abstract class Animal {
     private String name;

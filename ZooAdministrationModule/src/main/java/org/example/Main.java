@@ -1,5 +1,6 @@
 package org.example;
-import java.util.*;
+import org.example.models.modules.AdminMenu;
+import org.example.models.modules.Zoo;
 
 public class Main {
     public static void main(String[] args) {

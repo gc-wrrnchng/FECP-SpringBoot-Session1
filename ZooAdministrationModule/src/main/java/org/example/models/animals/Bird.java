@@ -1,19 +1,23 @@
-package org.example;
+package org.example.models.animals;
 
-public class Feline extends Animal{
-    public  Feline(String name, Enclosure enclosure){
+import org.example.models.buildings.Enclosure;
+
+public class Bird extends Animal {
+
+
+    public Bird(String name, Enclosure enclosure) {
         super(name, enclosure);
     }
 
     @Override
     public void makeSound() {
-        System.out.println(getName() + "ROAR!");
+        System.out.println(getName() + "Chirps");
         System.out.println();
     }
 
     @Override
     public void eat() {
-        System.out.println(getName() + " is eating meat.");
+        System.out.println(getName() + " is eating seeds.");
         System.out.println();
     }
 
@@ -25,7 +29,7 @@ public class Feline extends Animal{
 
     @Override
     public void roam() {
-        System.out.println(getName() + " is walking around the enclosure.");
+        System.out.println(getName() + " is flying around the enclosure.");
         System.out.println();
     }
 }

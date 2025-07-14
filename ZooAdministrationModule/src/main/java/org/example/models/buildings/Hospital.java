@@ -1,4 +1,6 @@
-package org.example;
+package org.example.models.buildings;
+
+import org.example.models.animals.Animal;
 
 import java.util.ArrayList;
 import java.util.List;

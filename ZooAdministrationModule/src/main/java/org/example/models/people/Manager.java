@@ -1,4 +1,4 @@
-package org.example;
+package org.example.models.people;
 
 public class Manager extends Person {
 
