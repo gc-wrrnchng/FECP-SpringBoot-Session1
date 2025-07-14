@@ -1,13 +1,14 @@
-package org.example.models.animals;
+package org.example.admin.models.animals;
 
-import org.example.models.buildings.Enclosure;
+import org.example.admin.models.buildings.Enclosure;
 
 public class Pachyderm extends Animal {
 
-    public Pachyderm(String name, Enclosure enclosure){
+    public Pachyderm(String name, Enclosure enclosure) {
         super(name, enclosure);
 
     }
+
     @Override
     public void makeSound() {
         System.out.println(getName() + "Trumpets");

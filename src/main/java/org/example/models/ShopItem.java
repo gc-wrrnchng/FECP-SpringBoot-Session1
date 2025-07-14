@@ -1,4 +1,4 @@
-package org.example.modules;
+package org.example.models;
 
 public class ShopItem {
     private final String name;

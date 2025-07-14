@@ -1,5 +1,6 @@
 package org.example.modules;
 
+import org.example.models.ShopItem;
 import org.example.models.animals.*;
 import org.example.models.buildings.Drinks;
 import org.example.models.buildings.Foods;
@@ -18,8 +19,8 @@ public class Zoo {
         this.sickAnimals = new ArrayList<>();
         this.scanner = new Scanner(System.in);
 
-        for(Animal animal : animals) {
-            if(animal.isHealthy()) {
+        for (Animal animal : animals) {
+            if (animal.isHealthy()) {
                 healthyAnimals.add(animal);
             } else {
                 sickAnimals.add(animal);
@@ -76,7 +77,7 @@ public class Zoo {
         int option = scanner.nextInt();
         scanner.nextLine();
 
-        if(option < 1 || option > availableTypes.size()) {
+        if (option < 1 || option > availableTypes.size()) {
             System.out.println("Invalid option.");
             return;
         }
@@ -84,13 +85,13 @@ public class Zoo {
         String selectedType = availableTypes.get(option - 1);
         List<Animal> animals = grouped.get(selectedType);
 
-        if(animals.isEmpty()) {
+        if (animals.isEmpty()) {
             System.out.println("No animals currently in this enclosure.");
             return;
         }
 
         System.out.println("\n--- " + selectedType + " ---");
-        for(int i = 0; i < animals.size(); i++) {
+        for (int i = 0; i < animals.size(); i++) {
             System.out.println((i + 1) + ". " + animals.get(i).getName());
         }
 
@@ -98,11 +99,11 @@ public class Zoo {
         int animalOption = scanner.nextInt();
         scanner.nextLine();
 
-        if(animalOption >= 1 && animalOption <= animals.size()) {
+        if (animalOption >= 1 && animalOption <= animals.size()) {
             Animal selected = animals.get(animalOption - 1);
             System.out.println("Would you like to feed " + selected.getName() + "? (yes/no): ");
             String answer = scanner.nextLine();
-            if(answer.equalsIgnoreCase("yes")) {
+            if (answer.equalsIgnoreCase("yes")) {
                 selected.eat();
                 selected.makeSound();
             } else {
@@ -113,13 +114,11 @@ public class Zoo {
         }
     }
 
-
     public void visitShops() {
         List<Shops> shopTypes = List.of(
                 new Foods(),
                 new Drinks(),
-                new Gifts()
-        );
+                new Gifts());
 
         System.out.println("\n=== Zoo Shops ===");
         for (int i = 0; i < shopTypes.size(); i++) {
@@ -186,7 +185,7 @@ public class Zoo {
                 } else {
                     System.out.println("Invalid option. Try again.");
                 }
-            } while(confirm != "yes");
+            } while (confirm != "yes");
         }
     }
 

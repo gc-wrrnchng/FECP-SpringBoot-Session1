@@ -1,7 +1,8 @@
 package org.example.models.buildings;
 
-import org.example.modules.ShopItem;
 import java.util.*;
+
+import org.example.models.ShopItem;
 
 public class Drinks extends Shops {
     public Drinks() {
@@ -13,8 +14,7 @@ public class Drinks extends Shops {
         return List.of(
                 new ShopItem("Coke", 30),
                 new ShopItem("Sprite", 30),
-                new ShopItem("Pepsi", 30)
-        );
+                new ShopItem("Pepsi", 30));
     }
 
     @Override

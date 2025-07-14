@@ -1,8 +1,8 @@
 package org.example.models.buildings;
 
-import org.example.modules.ShopItem;
-
 import java.util.*;
+
+import org.example.models.ShopItem;
 
 public abstract class Shops extends Buildings {
     public Shops(String name) {

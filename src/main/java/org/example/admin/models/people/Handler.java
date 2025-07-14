@@ -1,7 +1,7 @@
-package org.example.models.people;
+package org.example.admin.models.people;
 
-import org.example.models.animals.Animal;
-import org.example.models.buildings.Hospital;
+import org.example.admin.models.animals.Animal;
+import org.example.admin.models.buildings.Hospital;
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;
@@ -81,7 +81,8 @@ public class Handler extends Person {
 
             System.out.println("Animals Assigned to you: ");
             for (int i = 0; i < assignedAnimals.size(); i++) {
-                System.out.println((i + 1) + ". " + assignedAnimals.get(i).getName() + "(in " + assignedAnimals.get(i).getEnclosure().getName() + ")");
+                System.out.println((i + 1) + ". " + assignedAnimals.get(i).getName() + "(in "
+                        + assignedAnimals.get(i).getEnclosure().getName() + ")");
             }
 
             System.out.print("Choose animal number to interact with (0 to exit): ");

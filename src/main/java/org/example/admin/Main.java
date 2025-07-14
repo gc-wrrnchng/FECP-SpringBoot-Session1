@@ -1,6 +1,6 @@
-package org.example;
-import org.example.models.modules.AdminMenu;
-import org.example.models.modules.Zoo;
+package org.example.admin;
+import org.example.admin.models.modules.AdminMenu;
+import org.example.admin.models.modules.Zoo;
 
 public class Main {
     public static void main(String[] args) {

@@ -1,6 +1,6 @@
-package org.example.models.modules;
+package org.example.admin.models.modules;
 
-import org.example.models.people.Handler;
+import org.example.admin.models.people.Handler;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -12,24 +12,23 @@ public class AdminMenu {
     private static final String ADMIN_USERNAME = "admin";
     private static final String ADMIN_PASSWORD = "password";
 
-
-    public AdminMenu(Zoo zoo){
+    public AdminMenu(Zoo zoo) {
         this.zoo = zoo;
         this.scan = new Scanner(System.in);
 
     }
 
-    public void start(){
+    public void start() {
         System.out.println("\n----- Zoo Administrator Login -----");
-        if(authenticate()){
+        if (authenticate()) {
             System.out.println("Login Successfully");
             zooAdminMainMenu();
-        }else{
+        } else {
             System.out.println("Login Failed");
         }
     }
 
-    private boolean authenticate(){
+    private boolean authenticate() {
         System.out.println("Please login.");
         System.out.print("Enter Username: ");
         String username = scan.nextLine();
@@ -39,10 +38,10 @@ public class AdminMenu {
         return username.equals(ADMIN_USERNAME) && password.equals(ADMIN_PASSWORD);
     }
 
-    private void zooAdminMainMenu(){
+    private void zooAdminMainMenu() {
         int choice = 0;
 
-        while(true){
+        while (true) {
             System.out.println("\n----- Zoo Administrator Login -----");
             System.out.println("1. Setup Zoo Staff");
             System.out.println("2. Access Handler Module");
@@ -78,17 +77,16 @@ public class AdminMenu {
                     default:
                         System.out.println("Invalid Choice. Please try again.");
                 }
-            }catch (InputMismatchException e){
+            } catch (InputMismatchException e) {
                 System.out.println("Invalid input type, Please enter valid number: ");
                 scan.nextLine();
                 choice = -1;
             }
         }
 
+    }
 
-
-        }
-    private void setupZooStaff(){
+    private void setupZooStaff() {
         System.out.println("\n----- Setup Zoo Staff -----");
         System.out.print("Enter your name, manager: ");
         zoo.setManager(scan.nextLine());
@@ -113,31 +111,29 @@ public class AdminMenu {
 
         System.out.println("Zoo staff setup complete");
 
-
-
     }
 
-    private void accessHandlerModule(){
+    private void accessHandlerModule() {
         System.out.println("Enter your name (handler): ");
         String handlerName = scan.nextLine();
 
         Handler currentHandler = null;
 
-        if (zoo.getPachydermHandler() != null && zoo.getPachydermHandler().getName().equalsIgnoreCase(handlerName)){
+        if (zoo.getPachydermHandler() != null && zoo.getPachydermHandler().getName().equalsIgnoreCase(handlerName)) {
             currentHandler = zoo.getPachydermHandler();
 
-        } else if (zoo.getFelineHandler() != null && zoo.getFelineHandler().getName().equalsIgnoreCase(handlerName)){
+        } else if (zoo.getFelineHandler() != null && zoo.getFelineHandler().getName().equalsIgnoreCase(handlerName)) {
             currentHandler = zoo.getFelineHandler();
-        }else if (zoo.getBirdHandler() != null && zoo.getBirdHandler().getName().equalsIgnoreCase(handlerName)){
+        } else if (zoo.getBirdHandler() != null && zoo.getBirdHandler().getName().equalsIgnoreCase(handlerName)) {
             currentHandler = zoo.getBirdHandler();
         }
 
-        if (currentHandler != null){
+        if (currentHandler != null) {
             currentHandler.performDuties();
-        }else{
+        } else {
             System.out.println("Handler with name: " + handlerName + " not found or not assigned to an enclosure");
             System.out.println("Please setup first via 'Setup Zoo Staff' option.");
-            }
+        }
     }
 
 }
