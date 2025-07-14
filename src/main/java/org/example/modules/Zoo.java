@@ -1,262 +1,157 @@
-package org.example.modules;
+package org.example.admin.models.modules;
 
-import org.example.models.ShopItem;
-import org.example.models.animals.*;
-import org.example.models.buildings.Drinks;
-import org.example.models.buildings.Foods;
-import org.example.models.buildings.Gifts;
-import org.example.models.buildings.Shops;
+import org.example.admin.models.animals.Animal;
+import org.example.admin.models.animals.Bird;
+import org.example.admin.models.animals.Feline;
+import org.example.admin.models.animals.Pachyderm;
+import org.example.admin.models.buildings.*;
+import org.example.admin.models.people.Handler;
+import org.example.admin.models.people.Manager;
+import org.example.admin.models.people.Vendor;
+import org.example.admin.models.people.Veterinarian;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Zoo {
-    private List<Animal> healthyAnimals;
-    private List<Animal> sickAnimals;
-    private Scanner scanner;
+    private boolean isOpen;
 
-    public Zoo(List<Animal> animals) {
-        this.healthyAnimals = new ArrayList<>();
-        this.sickAnimals = new ArrayList<>();
-        this.scanner = new Scanner(System.in);
+    private Manager manager;
+    private Veterinarian veterinarian;
+    private Handler pachydermHandler;
+    private Handler felineHandler;
+    private Handler birdHandler;
+    private Vendor ticketVendor;
+    private Vendor shopVendor;
 
-        for (Animal animal : animals) {
-            if (animal.isHealthy()) {
-                healthyAnimals.add(animal);
-            } else {
-                sickAnimals.add(animal);
-            }
-        }
+    private List<Animal> animals;
+    private List<Enclosure> enclosures;
+    private PachydermEnclosure pachydermEnclosure;
+    private FelineEnclosure felineEnclosure;
+    private BirdEnclosure birdEnclosure;
+
+    private Hospital hospital;
+
+    public Zoo() {
+        this.isOpen = false;
+        this.hospital = new Hospital();
+        this.enclosures = new ArrayList<>();
+
+        this.animals = new ArrayList<>();
+
+        this.felineEnclosure = new FelineEnclosure("Feline's Den");
+        this.pachydermEnclosure = new PachydermEnclosure("Pachyderm's Habitat");
+        this.birdEnclosure = new BirdEnclosure("Bird's Habitat");
+
+        enclosures.add(felineEnclosure);
+        enclosures.add(pachydermEnclosure);
+        enclosures.add(birdEnclosure);
+
+        Feline mufasa = new Feline("Mufasa", felineEnclosure);
+        Feline meow = new Feline("Meow", felineEnclosure);
+        Pachyderm dumbo = new Pachyderm("Dumbo", pachydermEnclosure);
+        Pachyderm dumby = new Pachyderm("Dumby", pachydermEnclosure);
+        Bird tweetie = new Bird("tweetie", birdEnclosure);
+
+        animals.add(mufasa);
+        animals.add(meow);
+        animals.add(dumbo);
+        animals.add(dumby);
+        animals.add(tweetie);
+
+        felineEnclosure.getAnimals().add(mufasa);
+        felineEnclosure.getAnimals().add(meow);
+        pachydermEnclosure.getAnimals().add(dumbo);
+        pachydermEnclosure.getAnimals().add(dumby);
+        birdEnclosure.getAnimals().add(tweetie);
+
     }
 
-    private Map<String, List<Animal>> getGroupedEnclosures() {
-        Map<String, List<Animal>> enclosures = new LinkedHashMap<>();
-        enclosures.put("Pachyderm", new ArrayList<>());
-        enclosures.put("Feline", new ArrayList<>());
-        enclosures.put("Bird", new ArrayList<>());
+    public boolean isOpen() {
+        return isOpen;
 
-        for (Animal a : healthyAnimals) {
-            if (a instanceof Pachyderm) {
-                enclosures.get("Pachyderm").add(a);
-            } else if (a instanceof Feline) {
-                enclosures.get("Feline").add(a);
-            } else if (a instanceof Bird) {
-                enclosures.get("Bird").add(a);
-            }
-        }
-        return enclosures;
     }
 
-    public void visitEnclosures() {
-        Map<String, List<Animal>> grouped = getGroupedEnclosures();
-        List<String> availableTypes = new ArrayList<>();
-
-        System.out.println("\n===Zoo Enclosure===");
-        int index = 1;
-        for (Map.Entry<String, List<Animal>> entry : grouped.entrySet()) {
-            String type = entry.getKey();
-            List<Animal> animals = entry.getValue();
-
-            if (!animals.isEmpty()) {
-                availableTypes.add(type);
-                String animalNames = animals.stream()
-                        .map(Animal::getName)
-                        .distinct()
-                        .reduce((a, b) -> a + ", " + b)
-                        .orElse("");
-                System.out.println(index + ". " + type + " (" + animalNames + ")");
-                index++;
-            }
-        }
-
-        if (availableTypes.isEmpty()) {
-            System.out.println("There are no healthy animals in any enclosures.");
-            return;
-        }
-
-        System.out.println("Choose Enclosure:");
-        int option = scanner.nextInt();
-        scanner.nextLine();
-
-        if (option < 1 || option > availableTypes.size()) {
-            System.out.println("Invalid option.");
-            return;
-        }
-
-        String selectedType = availableTypes.get(option - 1);
-        List<Animal> animals = grouped.get(selectedType);
-
-        if (animals.isEmpty()) {
-            System.out.println("No animals currently in this enclosure.");
-            return;
-        }
-
-        System.out.println("\n--- " + selectedType + " ---");
-        for (int i = 0; i < animals.size(); i++) {
-            System.out.println((i + 1) + ". " + animals.get(i).getName());
-        }
-
-        System.out.println("Choose an animal to feed: ");
-        int animalOption = scanner.nextInt();
-        scanner.nextLine();
-
-        if (animalOption >= 1 && animalOption <= animals.size()) {
-            Animal selected = animals.get(animalOption - 1);
-            System.out.println("Would you like to feed " + selected.getName() + "? (yes/no): ");
-            String answer = scanner.nextLine();
-            if (answer.equalsIgnoreCase("yes")) {
-                selected.eat();
-                selected.makeSound();
-            } else {
-                System.out.println("You observe the " + selected.getName() + " from a distance.");
-            }
+    public void openZoo() {
+        if (!isOpen) {
+            isOpen = true;
+            System.out.println("Zoo is now open to visitors! ");
         } else {
-            System.out.println("Invalid option.");
+            System.out.println("Zoo is already open ");
         }
     }
 
-    public void visitShops() {
-        List<Shops> shopTypes = List.of(
-                new Foods(),
-                new Drinks(),
-                new Gifts());
-
-        System.out.println("\n=== Zoo Shops ===");
-        for (int i = 0; i < shopTypes.size(); i++) {
-            System.out.println((i + 1) + ". " + shopTypes.get(i).getName());
-        }
-
-        System.out.print("Choose a shop to visit: ");
-        int choice = scanner.nextInt();
-        scanner.nextLine();
-
-        if (choice < 1 || choice > shopTypes.size()) {
-            System.out.println("Invalid shop choice.");
-            return;
-        }
-
-        Shops selectedShop = shopTypes.get(choice - 1);
-        selectedShop.enter();
-        List<ShopItem> items = selectedShop.getItems();
-        List<ShopItem> cart = new ArrayList<>();
-
-        boolean shopping = true;
-        while (shopping) {
-            System.out.println("\n=== " + selectedShop.getName() + " ===");
-            for (int i = 0; i < items.size(); i++) {
-                System.out.println((i + 1) + ". " + items.get(i));
-            }
-
-            System.out.print("\nEnter the number of the item you want to buy: ");
-            int itemChoice = scanner.nextInt();
-            scanner.nextLine();
-
-            if (itemChoice >= 1 && itemChoice <= items.size()) {
-                ShopItem selectedItem = items.get(itemChoice - 1);
-                cart.add(selectedItem);
-            } else {
-                System.out.println("Invalid item.");
-                continue;
-            }
-
-            System.out.println("\nSelected:");
-            for (ShopItem item : cart) {
-                System.out.println(item.getName() + " (" + item.getPrice() + " PHP)");
-            }
-
-            String confirm;
-
-            do {
-                System.out.print("\nProceed to checkout? (yes/no): ");
-                confirm = scanner.nextLine();
-
-                if (confirm.equalsIgnoreCase("yes")) {
-                    int total = 0;
-                    System.out.println("\nPayment successful!");
-                    System.out.println("Receipt:");
-                    for (ShopItem item : cart) {
-                        System.out.println(" - " + item.getName() + ": " + item.getPrice() + " PHP");
-                        total += item.getPrice();
-                    }
-                    System.out.println("Total Paid: " + total + " PHP");
-                    shopping = false;
-                    break;
-                } else if (confirm.equalsIgnoreCase("no")) {
-                    break;
-                } else {
-                    System.out.println("Invalid option. Try again.");
-                }
-            } while (confirm != "yes");
+    public void closeZoo() {
+        if (isOpen) {
+            isOpen = false;
+            System.out.println("Zoo is now closed to visitors! ");
+        } else {
+            System.out.println("Zoo is already closed");
         }
     }
 
-    public void visitHospital() {
-        Map<String, String> healedTimestamps = new LinkedHashMap<>();
-        int option;
+    public void setManager(String name) {
+        this.manager = new Manager(name);
+    }
 
-        do {
-            System.out.println("\n=== Zoo Hospital Monitor ===");
-            System.out.println("1. View Sick Animals");
-            System.out.println("2. View Healed Animals");
-            System.out.println("3. Attend Science Lecture");
-            System.out.println("4. Heal Animals (Veterinarian)");
-            System.out.println("5. Exit");
-            System.out.print("Choose an option: ");
-            option = scanner.nextInt();
-            scanner.nextLine();
+    public void setVeterinarian(String name) {
+        this.veterinarian = new Veterinarian(name);
+    }
 
-            switch (option) {
-                case 1 -> {
-                    System.out.println("Sick Animals currently in Hospital:");
-                    if (sickAnimals.isEmpty()) {
-                        System.out.println("- None");
-                    } else {
-                        for (Animal animal : sickAnimals) {
-                            System.out.println("- " + animal.getName());
-                        }
-                    }
-                    break;
-                }
-                case 2 -> {
-                    System.out.println("Healed Animals with Timestamps:");
-                    if (healedTimestamps.isEmpty()) {
-                        System.out.println("- None");
-                    } else {
-                        for (Map.Entry<String, String> entry : healedTimestamps.entrySet()) {
-                            System.out.println("- " + entry.getKey() + " (" + entry.getValue() + ")");
-                        }
-                    }
-                    break;
-                }
-                case 3 -> {
-                    System.out.println("Dr. Ellie is giving a lecture on animal health and conservation.");
-                    break;
-                }
-                case 4 -> {
-                    if (sickAnimals.isEmpty()) {
-                        System.out.println("No animals to heal.");
-                        break;
-                    }
-                    System.out.println("Dr. Ellie begins healing sick animals...");
-                    List<Animal> healedNow = new ArrayList<>();
-                    for (Animal animal : sickAnimals) {
-                        animal.setHealthy(true);
-                        healedNow.add(animal);
-                        String timestamp = java.time.LocalDateTime.now()
-                                .format(java.time.format.DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-                        healedTimestamps.put(animal.getName(), timestamp);
-                        System.out.println("Healed: " + animal.getName());
-                        System.out.println(animal.getName() + " has been discharged and returned to enclosure.");
-                    }
-                    sickAnimals.removeAll(healedNow);
-                    healthyAnimals.addAll(healedNow);
-                    break;
-                }
-                case 5 -> {
-                    System.out.println("Exiting Zoo Vet Hospital. Goodbye!");
-                    break;
-                }
-                default -> System.out.println("Invalid option.");
-            }
-        } while (option != 5);
+    public void setPachydermHandler(String name) {
+        this.pachydermHandler = new Handler(name, "Pachyderm", hospital);
+        animals.stream()
+                .filter(a -> a instanceof Pachyderm)
+                .forEach(this.pachydermHandler::assignAnimal);
+    }
+
+    public void setFelineHandler(String name) {
+        this.felineHandler = new Handler(name, "Feline", hospital);
+        animals.stream()
+                .filter(a -> a instanceof Feline)
+                .forEach(this.felineHandler::assignAnimal);
+    }
+
+    public void setBirdHandler(String name) {
+        this.birdHandler = new Handler(name, "Bird", hospital);
+        animals.stream()
+                .filter(a -> a instanceof Bird)
+                .forEach(this.birdHandler::assignAnimal);
+    }
+
+    public void setTicketVendor(String name) {
+        this.ticketVendor = new Vendor(name, "Ticket");
+    }
+
+    public void setShopVendor(String name) {
+        this.shopVendor = new Vendor(name, "Shop");
+    }
+
+    public Handler getPachydermHandler() {
+        return pachydermHandler;
+    }
+
+    public Handler getFelineHandler() {
+        return felineHandler;
+    }
+
+    public Handler getBirdHandler() {
+        return birdHandler;
+    }
+
+    public PachydermEnclosure getPachydermEnclosure() {
+        return pachydermEnclosure;
+    }
+
+    public FelineEnclosure getFelineEnclosure() {
+        return felineEnclosure;
+    }
+
+    public BirdEnclosure getBirdEnclosure() {
+        return birdEnclosure;
+    }
+
+    public List<Enclosure> getEnclosures() {
+        return enclosures;
     }
 }

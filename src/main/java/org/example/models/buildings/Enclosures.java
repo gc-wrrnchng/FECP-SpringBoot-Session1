@@ -6,9 +6,8 @@ import java.util.*;
 public abstract class Enclosures<T extends Animal> extends Buildings {
     protected List<T> animals = new ArrayList<>();
 
-    public Enclosures(String name, List<T> animals) {
+    public Enclosures(String name) {
         super(name);
-        this.animals = animals;
     }
 
     public List<T> getAnimals() {
@@ -17,6 +16,10 @@ public abstract class Enclosures<T extends Animal> extends Buildings {
 
     public void addAnimal(T animal) {
         animals.add(animal);
+    }
+
+    public void removeAnimal(T animal) {
+        animals.remove(animal);
     }
 
     @Override

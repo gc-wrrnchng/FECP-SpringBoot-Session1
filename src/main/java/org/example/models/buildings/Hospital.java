@@ -1,19 +1,22 @@
 package org.example.models.buildings;
 
-import org.example.admin.models.animals.*;
+import org.example.admin.models.animals.Animal;
 import java.util.*;
 
-public class Hospital extends Buildings {
+public class Hospital extends Buildings{
     private List<Animal> patients = new ArrayList<>();
 
     public Hospital() {
-        super("Hospital");
     }
 
     public void admitAnimal(Animal animal) {
-        patients.add(animal);
-        animal.setHealthy(false);
-        System.out.println(animal.getClass().getName() + " has been admitted to the hospital.");
+        if (animal != null && !patients.contains(animal)) {
+            patients.add(animal);
+            animal.setHealthy(false);
+            System.out.println(animal.getName() + " has been admitted to the hospital.");
+        } else if (animal != null) {
+            System.out.println(animal.getName() + " is already in the hospital.");
+        }
     }
 
     public Animal dischargeAnimal(Animal animal) {
@@ -26,10 +29,5 @@ public class Hospital extends Buildings {
 
     public List<Animal> getPatients() {
         return patients;
-    }
-
-    @Override
-    public void enter() {
-        System.out.println("You entered the Hospital. Animals are being treated here.");
     }
 }

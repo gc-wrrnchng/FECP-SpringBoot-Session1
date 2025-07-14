@@ -1,11 +1,15 @@
 package org.example.models.animals;
 
+import org.example.admin.models.buildings.Enclosure;
+
 public abstract class Animal {
     protected boolean healthy;
     protected String name;
+    protected Enclosure enclosure;
 
-    public Animal(String name) {
+    public Animal(String name, Enclosure enclosure) {
         this.name = name;
+        this.enclosure = enclosure;
         this.healthy = true;
     }
 
@@ -23,6 +27,10 @@ public abstract class Animal {
 
     public String getName() {
         return name;
+    }
+
+    public Enclosure getEnclosure() {
+        return enclosure;
     }
 
     public void setHealthy(boolean healthy) {
