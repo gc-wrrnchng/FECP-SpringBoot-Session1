@@ -1,4 +1,4 @@
-package org.example.model.ticketprice;
+package org.example.ticket.model.ticketprice;
 
 public class StudentTicketStrategy implements TicketPricingStrategy {
     @Override

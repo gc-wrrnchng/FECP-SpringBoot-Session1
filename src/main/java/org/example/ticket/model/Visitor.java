@@ -1,4 +1,4 @@
-package org.example.model;
+package org.example.ticket.model;
 
 public class Visitor extends Person{
     private final int age;

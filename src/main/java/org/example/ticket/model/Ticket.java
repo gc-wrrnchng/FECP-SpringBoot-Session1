@@ -1,4 +1,4 @@
-package org.example.model;
+package org.example.ticket.model;
 
 public class Ticket {
     private String code;

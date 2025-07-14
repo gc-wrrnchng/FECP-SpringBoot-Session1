@@ -1,9 +1,9 @@
-package org.example.model.ticketprice;
+package org.example.ticket.model.ticketprice;
 
 import java.util.Random;
 
-import org.example.model.Ticket;
-import org.example.model.Visitor;
+import org.example.ticket.model.Ticket;
+import org.example.ticket.model.Visitor;
 
 public class TicketFactory {
     public static Ticket createTicket(Visitor visitor) {

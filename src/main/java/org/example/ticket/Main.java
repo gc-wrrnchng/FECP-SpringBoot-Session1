@@ -1,10 +1,10 @@
-package org.example;
+package org.example.ticket;
 
 import java.util.Scanner;
 
-import org.example.model.Ticket;
-import org.example.model.Visitor;
-import org.example.model.ticketprice.TicketFactory;
+import org.example.ticket.model.Ticket;
+import org.example.ticket.model.Visitor;
+import org.example.ticket.model.ticketprice.TicketFactory;
 
 public class Main {
     public static void main(String[] args) {
