@@ -1,6 +1,6 @@
 package org.example.models.buildings;
 
-import org.example.models.animals.Animal;
+import org.example.admin.models.animals.Animal;
 import java.util.*;
 
 public abstract class Enclosures<T extends Animal> extends Buildings {

@@ -1,13 +1,13 @@
-package org.example.models.people;
+package org.example.admin.models.people;
 
 public class Visitor extends Person {
 
-    public Visitor(String name, String location){
+    public Visitor(String name, String location) {
         super(name, location);
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return "Visitor - " + super.toString();
     }
 }

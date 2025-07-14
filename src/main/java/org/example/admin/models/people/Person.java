@@ -1,4 +1,4 @@
-package org.example.models.people;
+package org.example.admin.models.people;
 
 public class Person {
 

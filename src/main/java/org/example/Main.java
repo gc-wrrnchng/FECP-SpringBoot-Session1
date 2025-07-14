@@ -24,7 +24,7 @@ public class Main {
             option = scanner.nextInt();
             scanner.nextLine();
 
-            switch(option) {
+            switch (option) {
                 case 1: {
                     zooVisitor.visitEnclosures();
                     break;
@@ -48,11 +48,10 @@ public class Main {
 
         } while (option != 4);
     }
-}
 
     private static Zoo getZoo() {
         List<Animal> animals = new ArrayList<>();
-        Animal elephant = new Elephant("Dumbo","Pachyderm Enclosure");
+        Animal elephant = new Elephant("Dumbo", "Pachyderm Enclosure");
         Animal lion = new Lion("Leo", "Feline Enclosure");
         Animal owl = new Owl("Hoot", "Bird Enclosure");
         Animal tiger = new Tiger("Tigress", "Feline Enclosure");

@@ -1,7 +1,6 @@
 package org.example.models.buildings;
 
-import org.example.models.animals.Animal;
-import org.example.models.animals.Feline;
+import org.example.admin.models.animals.Feline;
 
 import java.util.*;
 

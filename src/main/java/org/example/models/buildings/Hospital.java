@@ -1,6 +1,6 @@
 package org.example.models.buildings;
 
-import org.example.models.animals.*;
+import org.example.admin.models.animals.*;
 import java.util.*;
 
 public class Hospital extends Buildings {
@@ -17,7 +17,7 @@ public class Hospital extends Buildings {
     }
 
     public Animal dischargeAnimal(Animal animal) {
-        if(patients.remove(animal)) {
+        if (patients.remove(animal)) {
             animal.setHealthy(true);
             return animal;
         }

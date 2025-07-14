@@ -1,14 +1,14 @@
-package org.example.models.modules;
+package org.example.admin.models.modules;
 
-import org.example.models.animals.Animal;
-import org.example.models.animals.Bird;
-import org.example.models.animals.Feline;
-import org.example.models.animals.Pachyderm;
-import org.example.models.buildings.*;
-import org.example.models.people.Handler;
-import org.example.models.people.Manager;
-import org.example.models.people.Vendor;
-import org.example.models.people.Veterinarian;
+import org.example.admin.models.animals.Animal;
+import org.example.admin.models.animals.Bird;
+import org.example.admin.models.animals.Feline;
+import org.example.admin.models.animals.Pachyderm;
+import org.example.admin.models.buildings.*;
+import org.example.admin.models.people.Handler;
+import org.example.admin.models.people.Manager;
+import org.example.admin.models.people.Vendor;
+import org.example.admin.models.people.Veterinarian;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +32,7 @@ public class Zoo {
 
     private Hospital hospital;
 
-    public Zoo(){
+    public Zoo() {
         this.isOpen = false;
         this.hospital = new Hospital();
         this.enclosures = new ArrayList<>();
@@ -47,7 +47,6 @@ public class Zoo {
         enclosures.add(pachydermEnclosure);
         enclosures.add(birdEnclosure);
 
-
         Feline mufasa = new Feline("Mufasa", felineEnclosure);
         Feline meow = new Feline("Meow", felineEnclosure);
         Pachyderm dumbo = new Pachyderm("Dumbo", pachydermEnclosure);
@@ -60,7 +59,6 @@ public class Zoo {
         animals.add(dumby);
         animals.add(tweetie);
 
-
         felineEnclosure.getAnimals().add(mufasa);
         felineEnclosure.getAnimals().add(meow);
         pachydermEnclosure.getAnimals().add(dumbo);
@@ -69,34 +67,34 @@ public class Zoo {
 
     }
 
-    public boolean isOpen(){
+    public boolean isOpen() {
         return isOpen;
 
     }
 
-    public void openZoo(){
-        if(!isOpen){
+    public void openZoo() {
+        if (!isOpen) {
             isOpen = true;
             System.out.println("Zoo is now open to visitors! ");
-        }else{
+        } else {
             System.out.println("Zoo is already open ");
         }
     }
 
-    public void closeZoo(){
-        if(isOpen){
+    public void closeZoo() {
+        if (isOpen) {
             isOpen = false;
             System.out.println("Zoo is now closed to visitors! ");
-        }else{
+        } else {
             System.out.println("Zoo is already closed");
         }
     }
 
-    public void setManager(String name){
+    public void setManager(String name) {
         this.manager = new Manager(name);
     }
 
-    public void setVeterinarian(String name){
+    public void setVeterinarian(String name) {
         this.veterinarian = new Veterinarian(name);
     }
 
@@ -153,7 +151,7 @@ public class Zoo {
         return birdEnclosure;
     }
 
-    public List<Enclosure> getEnclosures(){
+    public List<Enclosure> getEnclosures() {
         return enclosures;
     }
 }
