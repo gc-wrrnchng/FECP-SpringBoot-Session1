@@ -18,14 +18,15 @@ public class AdminMenu {
 
     }
 
-    public void start() {
+    public boolean start() {
         System.out.println("\n----- Zoo Administrator Login -----");
         if (authenticate()) {
             System.out.println("Login Successfully");
-            zooAdminMainMenu();
+            return zooAdminMainMenu();
         } else {
             System.out.println("Login Failed");
         }
+        return true;
     }
 
     private boolean authenticate() {
@@ -38,7 +39,7 @@ public class AdminMenu {
         return username.equals(ADMIN_USERNAME) && password.equals(ADMIN_PASSWORD);
     }
 
-    private void zooAdminMainMenu() {
+    private boolean zooAdminMainMenu() {
         int choice = 0;
 
         while (true) {
@@ -68,11 +69,10 @@ public class AdminMenu {
 
                     case 4:
                         zoo.closeZoo();
-                        break;
-
+                        return true;
                     case 5:
                         System.out.println("Exiting Admin Menu");
-                        break;
+                        return false;
 
                     default:
                         System.out.println("Invalid Choice. Please try again.");

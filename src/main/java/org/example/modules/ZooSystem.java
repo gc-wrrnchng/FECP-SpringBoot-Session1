@@ -5,7 +5,8 @@ import org.example.models.animals.*;
 import java.util.*;
 
 public class ZooSystem {
-    public static void main(String[] args) {
+
+    public boolean enterZoo() {
         Scanner scanner = new Scanner(System.in);
 
         // Setting up the zoo
@@ -20,8 +21,14 @@ public class ZooSystem {
             System.out.println("3. Visit Hospital");
             System.out.println("4. Leave Zoo");
             System.out.print("Choose an option: ");
-            option = scanner.nextInt();
-            scanner.nextLine();
+            if (scanner.hasNextInt()) {
+                option = scanner.nextInt();
+                scanner.nextLine();
+            } else {
+                System.out.println("Invalid input. Please enter a number.");
+                scanner.nextLine(); // consume the invalid input
+                option = -1; // set to invalid option to repeat loop
+            }
 
             switch (option) {
                 case 1: {
@@ -38,7 +45,7 @@ public class ZooSystem {
                 }
                 case 4: {
                     System.out.println("=== Thank you for visiting the Zoo! ===");
-                    break;
+                    return false;
                 }
                 default: {
                     System.out.println("Not a valid option. Try again.");
@@ -46,6 +53,8 @@ public class ZooSystem {
             }
 
         } while (option != 4);
+
+        return false;
     }
 
     private static Zoo getZoo() {
@@ -69,4 +78,8 @@ public class ZooSystem {
         return zooVisitor;
     }
 
+    public static void main(String[] args) {
+        ZooSystem zooSystem = new ZooSystem();
+        zooSystem.enterZoo();
+    }
 }
