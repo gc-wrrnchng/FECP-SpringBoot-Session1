@@ -9,24 +9,8 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        // Temporary
-        List<Animal> animals = new ArrayList<>();
-        Animal elephant = new Elephant("Pachyderm Enclosure");
-        Animal lion = new Lion("Feline Enclosure");
-        Animal owl = new Owl("Bird Enclosure");
-        Animal tiger = new Tiger("Feline Enclosure");
-        Animal parrot = new Parrot("Bird Enclosure");
-
-        tiger.setHealthy(false);
-        parrot.setHealthy(false);
-
-        animals.add(elephant);
-        animals.add(lion);
-        animals.add(owl);
-        animals.add(tiger);
-        animals.add(parrot);
-
-        Zoo zooVisitor = new Zoo(animals);
+        // Setting up the zoo
+        Zoo zooVisitor = getZoo();
         //
 
         int option;
@@ -63,6 +47,27 @@ public class Main {
             }
 
         } while (option != 4);
+    }
+
+    private static Zoo getZoo() {
+        List<Animal> animals = new ArrayList<>();
+        Animal elephant = new Elephant("Dumbo","Pachyderm Enclosure");
+        Animal lion = new Lion("Leo", "Feline Enclosure");
+        Animal owl = new Owl("Hoot", "Bird Enclosure");
+        Animal tiger = new Tiger("Tigress", "Feline Enclosure");
+        Animal parrot = new Parrot("Parakeet", "Bird Enclosure");
+
+        tiger.setHealthy(false);
+        parrot.setHealthy(false);
+
+        animals.add(elephant);
+        animals.add(lion);
+        animals.add(owl);
+        animals.add(tiger);
+        animals.add(parrot);
+
+        Zoo zooVisitor = new Zoo(animals);
+        return zooVisitor;
     }
 
 }

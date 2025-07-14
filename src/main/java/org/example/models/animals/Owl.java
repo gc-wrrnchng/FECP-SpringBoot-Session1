@@ -1,12 +1,12 @@
 package org.example.models.animals;
 
 public class Owl extends Bird {
-    public Owl(String location) {
-        super("Owl", location);
+    public Owl(String name, String location) {
+        super(name, location);
     }
 
     @Override
     public void makeSound() {
-        System.out.println("Owl hoots.");
+        System.out.println(name + " hoots.");
     }
 }
