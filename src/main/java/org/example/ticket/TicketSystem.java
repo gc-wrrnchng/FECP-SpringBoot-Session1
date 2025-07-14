@@ -7,7 +7,7 @@ import org.example.ticket.model.Visitor;
 import org.example.ticket.model.ticketprice.TicketFactory;
 
 public class TicketSystem {
-    public static boolean purchaseAndValidateTicket() {
+    public boolean purchaseAndValidateTicket() {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("=== 🎟️ WELCOME TO THE ZOO TICKET SHOP ===");
@@ -23,7 +23,7 @@ public class TicketSystem {
         String response = scanner.nextLine().trim().toLowerCase();
         if (!response.equals("yes") && !response.equals("y")) {
             System.out.println("Thank you for visiting! Have a great day!");
-            scanner.close();
+
             return false;
         }
         System.out.println();
@@ -69,7 +69,7 @@ public class TicketSystem {
             System.out.println("[Ticket added to system]");
         } else {
             System.out.println("\nYour purchase has been cancelled.");
-            scanner.close();
+
             return false;
         }
 
@@ -80,13 +80,12 @@ public class TicketSystem {
             ticketCode = scanner.nextLine();
             if (ticketCode.equals("q")) {
                 System.out.println("Thank you for visiting! Have a great day!");
-                scanner.close();
+
                 return false;
             } else if (!ticketCode.equals(ticket.getCode())) {
                 System.out.println("Ticket code entered is invalid.");
             } else {
                 System.out.println("🎉 Ticket accepted. You may now enter the Zoo.");
-                scanner.close();
                 return true;
             }
             System.out.print("Enter your ticket code: (\"q\" to quit) ");
@@ -94,10 +93,10 @@ public class TicketSystem {
     }
 
     public static void main(String[] args) {
-        if(purchaseAndValidateTicket() == true){
+        TicketSystem ticketSystem = new TicketSystem();
+        if (ticketSystem.purchaseAndValidateTicket() == true) {
             System.out.println("Validated");
-        }
-        else {
+        } else {
             System.out.println("Invalidated");
         }
     }

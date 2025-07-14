@@ -1,6 +1,6 @@
 package org.example.models.buildings;
 
-import org.example.admin.models.animals.Animal;
+import org.example.models.animals.Animal;
 import java.util.*;
 
 public abstract class Enclosures<T extends Animal> extends Buildings {
@@ -20,15 +20,5 @@ public abstract class Enclosures<T extends Animal> extends Buildings {
 
     public void removeAnimal(T animal) {
         animals.remove(animal);
-    }
-
-    @Override
-    public void enter() {
-        System.out.println("You entered the " + name + ".");
-        for (Animal a : animals) {
-            if (a.isHealthy()) {
-                System.out.println("- " + a.getName() + " is here.");
-            }
-        }
     }
 }

@@ -16,9 +16,4 @@ public class Drinks extends Shops {
                 new ShopItem("Sprite", 30),
                 new ShopItem("Pepsi", 30));
     }
-
-    @Override
-    public void enter() {
-        System.out.println("You entered the Drink store.");
-    }
 }

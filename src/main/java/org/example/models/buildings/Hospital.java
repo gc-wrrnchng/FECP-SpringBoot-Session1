@@ -1,13 +1,18 @@
 package org.example.models.buildings;
 
-import org.example.admin.models.animals.Animal;
+import org.example.models.animals.Animal;
 import java.util.*;
 
-public class Hospital extends Buildings{
-    private List<Animal> patients = new ArrayList<>();
+public class Hospital extends Buildings {
+    public Hospital(String name) {
+        super(name);
+    }
 
     public Hospital() {
+        super("Default Hospital");
     }
+
+    private List<Animal> patients = new ArrayList<>();
 
     public void admitAnimal(Animal animal) {
         if (animal != null && !patients.contains(animal)) {

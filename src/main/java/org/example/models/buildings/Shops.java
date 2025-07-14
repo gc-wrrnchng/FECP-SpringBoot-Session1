@@ -10,7 +10,4 @@ public abstract class Shops extends Buildings {
     }
 
     public abstract List<ShopItem> getItems();
-
-    @Override
-    public abstract void enter();
 }

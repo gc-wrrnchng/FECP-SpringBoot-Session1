@@ -1,14 +1,14 @@
-package org.example.admin.models.modules;
+package org.example.modules;
 
-import org.example.admin.models.animals.Animal;
-import org.example.admin.models.animals.Bird;
-import org.example.admin.models.animals.Feline;
-import org.example.admin.models.animals.Pachyderm;
-import org.example.admin.models.buildings.*;
-import org.example.admin.models.people.Handler;
-import org.example.admin.models.people.Manager;
-import org.example.admin.models.people.Vendor;
-import org.example.admin.models.people.Veterinarian;
+import org.example.models.animals.Animal;
+import org.example.models.animals.Bird;
+import org.example.models.animals.Feline;
+import org.example.models.animals.Pachyderm;
+import org.example.models.buildings.*;
+import org.example.models.people.Handler;
+import org.example.models.people.Manager;
+import org.example.models.people.Vendor;
+import org.example.models.people.Veterinarian;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +25,7 @@ public class Zoo {
     private Vendor shopVendor;
 
     private List<Animal> animals;
-    private List<Enclosure> enclosures;
+    private List<Enclosures> enclosures;
     private PachydermEnclosure pachydermEnclosure;
     private FelineEnclosure felineEnclosure;
     private BirdEnclosure birdEnclosure;
@@ -151,7 +151,7 @@ public class Zoo {
         return birdEnclosure;
     }
 
-    public List<Enclosure> getEnclosures() {
+    public List<Enclosures> getEnclosures() {
         return enclosures;
     }
 }
