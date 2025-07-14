@@ -11,5 +11,4 @@ public abstract class Buildings {
         return name;
     }
 
-    public abstract void enter();
 }
