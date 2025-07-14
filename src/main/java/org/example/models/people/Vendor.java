@@ -1,4 +1,4 @@
-package org.example.admin.models.people;
+package org.example.models.people;
 
 public class Vendor extends Person {
 

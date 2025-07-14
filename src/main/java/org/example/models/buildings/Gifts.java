@@ -16,9 +16,4 @@ public class Gifts extends Shops {
                 new ShopItem("Plush Toy", 120),
                 new ShopItem("Headband", 40));
     }
-
-    @Override
-    public void enter() {
-        System.out.println("You entered the Gift Store.");
-    }
 }

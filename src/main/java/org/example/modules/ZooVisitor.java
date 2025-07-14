@@ -10,17 +10,31 @@ import org.example.models.people.Veterinarian;
 
 import java.util.*;
 
-public class Zoo {
+public class ZooVisitor {
     private List<Animal> healthyAnimals;
     private List<Animal> sickAnimals;
     private Scanner scanner;
     private Veterinarian veterinarian;
 
-    public Zoo(List<Animal> animals, Veterinarian veterinarian) {
+    public ZooVisitor(List<Animal> animals, Veterinarian veterinarian) {
         this.healthyAnimals = new ArrayList<>();
         this.sickAnimals = new ArrayList<>();
         this.scanner = new Scanner(System.in);
         this.veterinarian = veterinarian;
+
+        for (Animal animal : animals) {
+            if (animal.isHealthy()) {
+                healthyAnimals.add(animal);
+            } else {
+                sickAnimals.add(animal);
+            }
+        }
+    }
+
+    public ZooVisitor(List<Animal> animals) {
+        this.healthyAnimals = new ArrayList<>();
+        this.sickAnimals = new ArrayList<>();
+        this.scanner = new Scanner(System.in);
 
         for (Animal animal : animals) {
             if (animal.isHealthy()) {
@@ -138,7 +152,6 @@ public class Zoo {
         }
 
         Shops selectedShop = shopTypes.get(choice - 1);
-        selectedShop.enter();
         List<ShopItem> items = selectedShop.getItems();
         List<ShopItem> cart = new ArrayList<>();
 
@@ -229,7 +242,8 @@ public class Zoo {
                     break;
                 }
                 case 3 -> {
-                    System.out.println(veterinarian.getName() + " is giving a lecture on animal health and conservation.");
+                    System.out.println(
+                            veterinarian.getName() + " is giving a lecture on animal health and conservation.");
                     break;
                 }
                 case 4 -> {

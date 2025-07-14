@@ -1,6 +1,7 @@
 package org.example.modules;
 
 import org.example.models.animals.*;
+import org.example.modules.ZooVisitor.*;
 
 import java.util.*;
 
@@ -10,7 +11,7 @@ public class ZooSystem {
         Scanner scanner = new Scanner(System.in);
 
         // Setting up the zoo
-        Zoo zooVisitor = getZoo();
+        ZooVisitor zooVisitor = getZoo();
         //
 
         int option;
@@ -57,7 +58,7 @@ public class ZooSystem {
         return false;
     }
 
-    private static Zoo getZoo() {
+    private static ZooVisitor getZoo() {
         List<Animal> animals = new ArrayList<>();
         Animal elephant = new Elephant("Dumbo", "Pachyderm Enclosure");
         Animal lion = new Lion("Leo", "Feline Enclosure");
@@ -74,7 +75,7 @@ public class ZooSystem {
         animals.add(tiger);
         animals.add(parrot);
 
-        Zoo zooVisitor = new Zoo(animals);
+        ZooVisitor zooVisitor = new ZooVisitor(animals);
         return zooVisitor;
     }
 

@@ -1,6 +1,6 @@
-package org.example.admin.models.modules;
+package org.example.modules;
 
-import org.example.admin.models.people.Handler;
+import org.example.models.people.Handler;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;

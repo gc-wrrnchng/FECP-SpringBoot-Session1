@@ -16,9 +16,4 @@ public class Foods extends Shops {
                 new ShopItem("Hotdog", 30),
                 new ShopItem("Burger", 40));
     }
-
-    @Override
-    public void enter() {
-        System.out.println("You entered the Food Store.");
-    }
 }

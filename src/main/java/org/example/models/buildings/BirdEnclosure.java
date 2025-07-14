@@ -8,4 +8,8 @@ public class BirdEnclosure extends Enclosures<Bird> {
     public BirdEnclosure(String name, List<Bird> animals) {
         super(name, animals);
     }
+
+    public BirdEnclosure(String string) {
+        super(string);
+    }
 }

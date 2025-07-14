@@ -1,7 +1,7 @@
-package org.example.admin.models.people;
+package org.example.models.people;
 
-import org.example.admin.models.animals.Animal;
-import org.example.admin.models.buildings.Hospital;
+import org.example.models.animals.Animal;
+import org.example.models.buildings.Hospital;
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;

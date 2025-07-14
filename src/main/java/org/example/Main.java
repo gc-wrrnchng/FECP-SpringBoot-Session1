@@ -1,7 +1,7 @@
 package org.example;
 
-import org.example.admin.models.modules.AdminMenu;
-import org.example.admin.models.modules.Zoo;
+import org.example.modules.AdminMenu;
+import org.example.modules.Zoo;
 import org.example.modules.ZooSystem;
 import org.example.ticket.TicketSystem;
 
