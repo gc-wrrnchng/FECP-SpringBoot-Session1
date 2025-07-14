@@ -1,0 +1,35 @@
+package org.example.models.animals;
+
+public abstract class Animal {
+    protected boolean healthy;
+    protected String name;
+
+    public Animal(String name) {
+        this.name = name;
+        this.healthy = true;
+    }
+
+    public void eat() {
+        System.out.println(name + " is eating.");
+    }
+
+    public void sleep() {
+        System.out.println(name + " is sleeping.");
+    }
+
+    public boolean isHealthy() {
+        return healthy;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setHealthy(boolean healthy) {
+        this.healthy = healthy;
+    }
+
+    public abstract void makeSound();
+
+    public abstract void roam();
+}
